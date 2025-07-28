@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,10 +6,27 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { processImageFromUrl } from "@/lib/backgroundRemoval";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
+  const [processedLogoUrl, setProcessedLogoUrl] = useState<string>("/lovable-uploads/9a97138e-ca9d-4e6c-b374-d87531336ad9.png");
+
+  useEffect(() => {
+    // Process the new logo to remove white background
+    const processLogo = async () => {
+      try {
+        const processedUrl = await processImageFromUrl("/lovable-uploads/9a97138e-ca9d-4e6c-b374-d87531336ad9.png");
+        setProcessedLogoUrl(processedUrl);
+      } catch (error) {
+        console.error("Failed to process logo:", error);
+        // Keep using the original logo if processing fails
+      }
+    };
+
+    processLogo();
+  }, []);
 
   return (
     <div className="min-h-screen gradient-primary flex items-center justify-center p-4">
@@ -17,7 +34,7 @@ export default function Login() {
         <CardHeader className="text-center space-y-4">
           <div className="flex justify-center">
             <img 
-              src="/lovable-uploads/6c85cea1-3554-4699-826c-05f108681328.png" 
+              src={processedLogoUrl}
               alt="Pontua+" 
               className="h-12 w-auto"
             />

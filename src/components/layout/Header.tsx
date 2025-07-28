@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, User, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { processImageFromUrl } from "@/lib/backgroundRemoval";
 import { 
   DropdownMenu, 
   DropdownMenuContent, 
@@ -18,7 +19,23 @@ const navItems = [
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [processedLogoUrl, setProcessedLogoUrl] = useState<string>("/lovable-uploads/9a97138e-ca9d-4e6c-b374-d87531336ad9.png");
   const location = useLocation();
+
+  useEffect(() => {
+    // Process the new logo to remove white background
+    const processLogo = async () => {
+      try {
+        const processedUrl = await processImageFromUrl("/lovable-uploads/9a97138e-ca9d-4e6c-b374-d87531336ad9.png");
+        setProcessedLogoUrl(processedUrl);
+      } catch (error) {
+        console.error("Failed to process logo:", error);
+        // Keep using the original logo if processing fails
+      }
+    };
+
+    processLogo();
+  }, []);
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -29,7 +46,7 @@ export const Header = () => {
           {/* Logo */}
           <Link to="/dashboard" className="flex items-center space-x-2">
             <img 
-              src="/lovable-uploads/6c85cea1-3554-4699-826c-05f108681328.png" 
+              src={processedLogoUrl}
               alt="Pontua+" 
               className="h-8 w-auto"
             />
