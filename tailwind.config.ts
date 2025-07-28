@@ -18,12 +18,26 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				poppins: ['Poppins', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				
+				// Pontua+ Brand Colors
+				'royal-blue': 'hsl(var(--royal-blue))',
+				'vibrant-purple': 'hsl(var(--vibrant-purple))',
+				
+				// Tier Colors
+				bronze: 'hsl(var(--bronze))',
+				silver: 'hsl(var(--silver))',
+				gold: 'hsl(var(--gold))',
+				diamond: 'hsl(var(--diamond))',
+				
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
