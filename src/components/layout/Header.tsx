@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, User, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { processImageFromUrl } from "@/lib/backgroundRemoval";
+import { useTheme } from "@/components/theme-provider";
 import { 
   DropdownMenu, 
   DropdownMenuContent, 
@@ -11,31 +12,38 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const navItems = [
-  { name: "Performance", href: "/dashboard" },
+  { name: "Desempenho", href: "/dashboard" },
   { name: "Ranking", href: "/ranking" },
-  { name: "Rewards", href: "/rewards" },
-  { name: "Accessibility", href: "/accessibility" },
+  { name: "Recompensas", href: "/rewards" },
+  { name: "Acessibilidade", href: "/accessibility" },
 ];
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [processedLogoUrl, setProcessedLogoUrl] = useState<string>("/lovable-uploads/9a97138e-ca9d-4e6c-b374-d87531336ad9.png");
   const location = useLocation();
+  const { theme } = useTheme();
 
   useEffect(() => {
-    // Process the new logo to remove white background
+    // Choose logo based on theme - dark logo for light backgrounds, light logo for dark backgrounds
+    const logoPath = theme === 'dark' 
+      ? "/lovable-uploads/6c85cea1-3554-4699-826c-05f108681328.png" // Light logo for dark theme
+      : "/lovable-uploads/9a97138e-ca9d-4e6c-b374-d87531336ad9.png"; // Dark logo for light theme
+
+    // Process the logo to remove white background
     const processLogo = async () => {
       try {
-        const processedUrl = await processImageFromUrl("/lovable-uploads/9a97138e-ca9d-4e6c-b374-d87531336ad9.png");
+        const processedUrl = await processImageFromUrl(logoPath);
         setProcessedLogoUrl(processedUrl);
       } catch (error) {
         console.error("Failed to process logo:", error);
         // Keep using the original logo if processing fails
+        setProcessedLogoUrl(logoPath);
       }
     };
 
     processLogo();
-  }, []);
+  }, [theme]);
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -48,7 +56,7 @@ export const Header = () => {
             <img 
               src={processedLogoUrl}
               alt="Pontua+" 
-              className="h-8 w-auto"
+              className="h-12 w-auto"
             />
           </Link>
 
@@ -81,13 +89,13 @@ export const Header = () => {
                 <DropdownMenuItem asChild>
                   <Link to="/profile" className="flex items-center space-x-2">
                     <User className="h-4 w-4" />
-                    <span>Profile</span>
+                    <span>Perfil</span>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link to="/login" className="flex items-center space-x-2 text-destructive">
                     <LogOut className="h-4 w-4" />
-                    <span>Logout</span>
+                    <span>Sair</span>
                   </Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -130,14 +138,14 @@ export const Header = () => {
                   className="block px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-accent rounded-lg transition-smooth"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Profile
+                  Perfil
                 </Link>
                 <Link
                   to="/login"
                   className="block px-3 py-2 text-sm font-medium text-destructive hover:bg-accent rounded-lg transition-smooth"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Logout
+                  Sair
                 </Link>
               </div>
             </div>

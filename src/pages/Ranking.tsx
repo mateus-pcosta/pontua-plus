@@ -71,10 +71,10 @@ export default function Ranking() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-foreground mb-2">
-            Student Rankings 🏆
+            Ranking de Estudantes 🏆
           </h1>
           <p className="text-muted-foreground">
-            See how students are performing across different achievement tiers
+            Veja como os estudantes estão se saindo nos diferentes níveis de conquista
           </p>
         </div>
 
@@ -83,8 +83,8 @@ export default function Ranking() {
           <div className="lg:col-span-1">
             <Card className="shadow-card">
               <CardHeader>
-                <CardTitle>Achievement Tiers</CardTitle>
-                <CardDescription>Click on a tier to see detailed rankings</CardDescription>
+                <CardTitle>Níveis de Conquista</CardTitle>
+                <CardDescription>Clique em um nível para ver o ranking detalhado</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 {tiers.map((tier) => {

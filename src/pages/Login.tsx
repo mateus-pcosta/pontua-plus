@@ -40,12 +40,12 @@ export default function Login() {
             />
           </div>
           <CardTitle className="text-2xl font-semibold">
-            {isSignUp ? "Join Pontua+" : "Welcome back"}
+            {isSignUp ? "Junte-se ao Pontua+" : "Bem-vindo de volta"}
           </CardTitle>
           <CardDescription>
             {isSignUp 
-              ? "Create your account to start your gamified learning journey" 
-              : "Sign in to your account to continue learning"
+              ? "Crie sua conta para começar sua jornada de aprendizagem gamificada" 
+              : "Entre em sua conta para continuar aprendendo"
             }
           </CardDescription>
         </CardHeader>
@@ -54,32 +54,32 @@ export default function Login() {
           <form className="space-y-4">
             {isSignUp && (
               <div className="space-y-2">
-                <Label htmlFor="name">Full Name</Label>
+                <Label htmlFor="name">Nome Completo</Label>
                 <Input 
                   id="name" 
-                  placeholder="Enter your full name" 
+                  placeholder="Digite seu nome completo" 
                   className="rounded-xl"
                 />
               </div>
             )}
             
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">E-mail</Label>
               <Input 
                 id="email" 
                 type="email" 
-                placeholder="Enter your email" 
+                placeholder="Digite seu e-mail" 
                 className="rounded-xl"
               />
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">Senha</Label>
               <div className="relative">
                 <Input 
                   id="password" 
                   type={showPassword ? "text" : "password"}
-                  placeholder="Enter your password"
+                  placeholder="Digite sua senha"
                   className="rounded-xl pr-10"
                 />
                 <button
@@ -94,16 +94,16 @@ export default function Login() {
             
             {isSignUp && (
               <div className="space-y-2">
-                <Label htmlFor="role">Role</Label>
+                <Label htmlFor="role">Função</Label>
                 <Select>
                   <SelectTrigger className="rounded-xl">
-                    <SelectValue placeholder="Select your role" />
+                    <SelectValue placeholder="Selecione sua função" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="student">Student</SelectItem>
-                    <SelectItem value="teacher">Teacher</SelectItem>
-                    <SelectItem value="principal">Principal</SelectItem>
-                    <SelectItem value="guardian">Guardian</SelectItem>
+                    <SelectItem value="student">Estudante</SelectItem>
+                    <SelectItem value="teacher">Professor</SelectItem>
+                    <SelectItem value="principal">Diretor</SelectItem>
+                    <SelectItem value="guardian">Responsável</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -115,7 +115,7 @@ export default function Login() {
                   to="/forgot-password" 
                   className="text-sm text-primary hover:text-primary/80 transition-smooth"
                 >
-                  Forgot password?
+                  Esqueceu a senha?
                 </Link>
               </div>
             )}
@@ -127,21 +127,21 @@ export default function Login() {
               asChild
             >
               <Link to="/dashboard">
-                {isSignUp ? "Create Account" : "Sign In"}
+                {isSignUp ? "Criar Conta" : "Entrar"}
               </Link>
             </Button>
           </form>
           
           <div className="text-center space-y-2">
             <p className="text-sm text-muted-foreground">
-              {isSignUp ? "Already have an account?" : "Don't have an account?"}
+              {isSignUp ? "Já tem uma conta?" : "Não tem uma conta?"}
             </p>
             <Button 
               variant="ghost" 
               onClick={() => setIsSignUp(!isSignUp)}
               className="text-primary hover:text-primary/80"
             >
-              {isSignUp ? "Sign in here" : "Sign up here"}
+              {isSignUp ? "Entre aqui" : "Cadastre-se aqui"}
             </Button>
           </div>
         </CardContent>

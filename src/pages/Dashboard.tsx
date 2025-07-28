@@ -40,10 +40,10 @@ export default function Dashboard() {
         {/* Welcome Section */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-foreground mb-2">
-            Welcome back, {studentData.name}! 🎓
+            Bem-vindo de volta, {studentData.name}! 🎓
           </h1>
           <p className="text-muted-foreground">
-            Ready to continue your learning journey? You're doing amazing!
+            Pronto para continuar sua jornada de aprendizagem? Você está indo muito bem!
           </p>
         </div>
 
@@ -51,7 +51,7 @@ export default function Dashboard() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <Card className="shadow-card hover:shadow-elegant transition-smooth">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Current Points</CardTitle>
+              <CardTitle className="text-sm font-medium">Pontos Atuais</CardTitle>
               <Target className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
@@ -66,7 +66,7 @@ export default function Dashboard() {
 
           <Card className="shadow-card hover:shadow-elegant transition-smooth">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Attendance</CardTitle>
+              <CardTitle className="text-sm font-medium">Frequência</CardTitle>
               <Calendar className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
@@ -77,7 +77,7 @@ export default function Dashboard() {
 
           <Card className="shadow-card hover:shadow-elegant transition-smooth">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Average Grade</CardTitle>
+              <CardTitle className="text-sm font-medium">Nota Média</CardTitle>
               <TrendingUp className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
@@ -92,7 +92,7 @@ export default function Dashboard() {
 
           <Card className="shadow-card hover:shadow-elegant transition-smooth">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Next Tier</CardTitle>
+              <CardTitle className="text-sm font-medium">Próximo Nível</CardTitle>
               <Award className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
@@ -109,8 +109,8 @@ export default function Dashboard() {
           {/* Grades Breakdown */}
           <Card className="shadow-card">
             <CardHeader>
-              <CardTitle>Subject Performance</CardTitle>
-              <CardDescription>Your latest bimonthly grades</CardDescription>
+              <CardTitle>Desempenho por Matéria</CardTitle>
+              <CardDescription>Suas notas bimestrais mais recentes</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               {Object.entries(studentData.grades).map(([subject, grade]) => (
@@ -128,8 +128,8 @@ export default function Dashboard() {
           {/* Comparison Chart */}
           <Card className="shadow-card">
             <CardHeader>
-              <CardTitle>Performance Comparison</CardTitle>
-              <CardDescription>How you compare to averages</CardDescription>
+              <CardTitle>Comparação de Desempenho</CardTitle>
+              <CardDescription>Como você se compara às médias</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="space-y-6">
