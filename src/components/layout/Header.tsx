@@ -60,7 +60,7 @@ export const Header = () => {
             <img 
               src={processedLogoUrl}
               alt="Pontua+" 
-              className="h-12 w-auto"
+              className="h-16 w-auto"
             />
           </Link>
 
