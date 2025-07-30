@@ -28,7 +28,7 @@ export const Header = () => {
     // Choose logo based on theme - dark logo for light backgrounds, light logo for dark backgrounds
     const logoPath = theme === 'dark' 
       ? "/lovable-uploads/6c85cea1-3554-4699-826c-05f108681328.png" // Light logo for dark theme
-      : "/lovable-uploads/9a97138e-ca9d-4e6c-b374-d87531336ad9.png"; // Dark logo for light theme
+      : "/lovable-uploads/6a6db8e8-7eb3-462f-945c-435ea04b49da.png"; // New dark logo for light theme
 
     // Process the logo to remove white background
     const processLogo = async () => {
