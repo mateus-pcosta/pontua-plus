@@ -14,18 +14,8 @@ export default function Login() {
   const [processedLogoUrl, setProcessedLogoUrl] = useState<string>("/lovable-uploads/9a97138e-ca9d-4e6c-b374-d87531336ad9.png");
 
   useEffect(() => {
-    // Process the new logo to remove white background
-    const processLogo = async () => {
-      try {
-        const processedUrl = await processImageFromUrl("/lovable-uploads/6a6db8e8-7eb3-462f-945c-435ea04b49da.png");
-        setProcessedLogoUrl(processedUrl);
-      } catch (error) {
-        console.error("Failed to process logo:", error);
-        // Keep using the original logo if processing fails
-      }
-    };
-
-    processLogo();
+    // Use the new dark logo directly without background removal since it doesn't have a white background
+    setProcessedLogoUrl("/lovable-uploads/6a6db8e8-7eb3-462f-945c-435ea04b49da.png");
   }, []);
 
   return (

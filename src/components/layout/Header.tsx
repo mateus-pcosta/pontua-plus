@@ -30,19 +30,23 @@ export const Header = () => {
       ? "/lovable-uploads/6c85cea1-3554-4699-826c-05f108681328.png" // Light logo for dark theme
       : "/lovable-uploads/6a6db8e8-7eb3-462f-945c-435ea04b49da.png"; // New dark logo for light theme
 
-    // Process the logo to remove white background
-    const processLogo = async () => {
-      try {
-        const processedUrl = await processImageFromUrl(logoPath);
-        setProcessedLogoUrl(processedUrl);
-      } catch (error) {
-        console.error("Failed to process logo:", error);
-        // Keep using the original logo if processing fails
-        setProcessedLogoUrl(logoPath);
-      }
-    };
-
-    processLogo();
+    // For the new dark logo, don't process it as it doesn't have a white background to remove
+    // Only process the light logo that has a white background
+    if (theme === 'dark') {
+      const processLogo = async () => {
+        try {
+          const processedUrl = await processImageFromUrl(logoPath);
+          setProcessedLogoUrl(processedUrl);
+        } catch (error) {
+          console.error("Failed to process logo:", error);
+          setProcessedLogoUrl(logoPath);
+        }
+      };
+      processLogo();
+    } else {
+      // Use the new dark logo directly without background removal since it doesn't have a white background
+      setProcessedLogoUrl(logoPath);
+    }
   }, [theme]);
 
   const isActive = (path: string) => location.pathname === path;
