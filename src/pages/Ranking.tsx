@@ -111,10 +111,10 @@ export default function Ranking() {
                       </div>
                       <div className="text-right">
                         <div className="font-bold">{tier.percentage}%</div>
-                        <div className="text-sm opacity-90">of students</div>
+                          <div className="text-sm opacity-90">dos estudantes</div>
                         {isCurrentUserTier && (
                           <Badge variant="secondary" className="mt-1 bg-white text-black">
-                            Your Tier
+                            Seu Nível
                           </Badge>
                         )}
                       </div>
@@ -124,7 +124,7 @@ export default function Ranking() {
                 
                 <div className="mt-4 p-3 bg-muted rounded-lg">
                   <p className="text-sm text-muted-foreground">
-                    💡 <strong>Note:</strong> Bronze tier rankings are hidden to encourage improvement without embarrassment.
+                    💡 <strong>Nota:</strong> Rankings do nível Bronze estão ocultos para encorajar melhorias sem constrangimento.
                   </p>
                 </div>
               </CardContent>
@@ -141,9 +141,9 @@ export default function Ranking() {
                       <selectedTierData.icon className="h-6 w-6 text-white" />
                     </div>
                     <div>
-                      <CardTitle>{selectedTierData.name} Tier Rankings</CardTitle>
+                      <CardTitle>Rankings do Nível {selectedTierData.name}</CardTitle>
                       <CardDescription>
-                        Top performers in the {selectedTierData.range} points range
+                        Melhores alunos na faixa de {selectedTierData.range} pontos
                       </CardDescription>
                     </div>
                   </div>
@@ -155,12 +155,12 @@ export default function Ranking() {
                       <div className="text-center p-4 bg-muted rounded-lg">
                         <Users className="h-6 w-6 mx-auto mb-2 text-muted-foreground" />
                         <div className="text-2xl font-bold">{selectedTierData.percentage}%</div>
-                        <div className="text-sm text-muted-foreground">of all students</div>
+                        <div className="text-sm text-muted-foreground">de todos os estudantes</div>
                       </div>
                       <div className="text-center p-4 bg-muted rounded-lg">
                         <Trophy className="h-6 w-6 mx-auto mb-2 text-muted-foreground" />
                         <div className="text-2xl font-bold">{selectedTierData.students.length}</div>
-                        <div className="text-sm text-muted-foreground">top students shown</div>
+                        <div className="text-sm text-muted-foreground">melhores estudantes</div>
                       </div>
                     </div>
 
@@ -187,7 +187,7 @@ export default function Ranking() {
                               <div className="font-semibold flex items-center space-x-2">
                                 <span>{student.name}</span>
                                 {student.name === "Maria Silva" && (
-                                  <Badge variant="secondary">You</Badge>
+                                  <Badge variant="secondary">Você</Badge>
                                 )}
                               </div>
                             </div>
@@ -207,9 +207,9 @@ export default function Ranking() {
                   <div className="text-center space-y-4">
                     <Trophy className="h-16 w-16 mx-auto text-muted-foreground" />
                     <div>
-                      <h3 className="text-lg font-semibold mb-2">Select a Tier</h3>
+                      <h3 className="text-lg font-semibold mb-2">Selecione um Nível</h3>
                       <p className="text-muted-foreground">
-                        Choose a tier from the left to view detailed rankings and statistics
+                        Escolha um nível à esquerda para ver rankings detalhados e estatísticas
                       </p>
                     </div>
                   </div>

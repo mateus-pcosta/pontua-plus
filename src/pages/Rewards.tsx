@@ -148,31 +148,31 @@ export default function Rewards() {
           <CardHeader>
             <CardTitle className="flex items-center space-x-2">
               <Trophy className="h-5 w-5 text-gold" />
-              <span>Your Current Status</span>
+              <span>Seu Status Atual</span>
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary">{currentPoints}</div>
-                <div className="text-sm text-muted-foreground">Current Points</div>
+                <div className="text-sm text-muted-foreground">Pontos Atuais</div>
               </div>
               <div className="text-center">
                 <Badge className="bg-gold text-white text-base px-3 py-1">
-                  {currentTier} Tier
+                  Nível {currentTier}
                 </Badge>
-                <div className="text-sm text-muted-foreground mt-1">Current Tier</div>
+                <div className="text-sm text-muted-foreground mt-1">Nível Atual</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-secondary">3</div>
-                <div className="text-sm text-muted-foreground">Points to Diamond</div>
+                <div className="text-sm text-muted-foreground">Pontos para Diamond</div>
               </div>
             </div>
             
             <div className="mt-6">
               <div className="flex justify-between text-sm mb-2">
-                <span>Progress to next tier</span>
-                <span>{currentPoints}/81 points</span>
+                <span>Progresso para o próximo nível</span>
+                <span>{currentPoints}/81 pontos</span>
               </div>
               <Progress value={(currentPoints / 81) * 100} className="h-3" />
             </div>
@@ -194,9 +194,9 @@ export default function Rewards() {
                         <Icon className="h-6 w-6 text-white" />
                       </div>
                       <div>
-                        <CardTitle>{tierData.tier} Tier Rewards</CardTitle>
+                        <CardTitle>Recompensas do Nível {tierData.tier}</CardTitle>
                         <CardDescription>
-                          Requires {tierData.minPoints}+ points
+                          Requer {tierData.minPoints}+ pontos
                         </CardDescription>
                       </div>
                     </div>
@@ -242,12 +242,12 @@ export default function Rewards() {
                               {isUnlocked ? (
                                 <Button size="sm" variant="gradient">
                                   <Gift className="h-4 w-4 mr-1" />
-                                  Claim
+                                  Resgatar
                                 </Button>
                               ) : (
                                 <Button size="sm" variant="ghost" disabled>
                                   <Lock className="h-4 w-4 mr-1" />
-                                  Locked
+                                  Bloqueado
                                 </Button>
                               )}
                             </div>
@@ -267,37 +267,37 @@ export default function Rewards() {
           <CardHeader>
             <CardTitle className="flex items-center space-x-2">
               <Calendar className="h-5 w-5" />
-              <span>How Rewards Work</span>
+              <span>Como Funcionam as Recompensas</span>
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <h4 className="font-semibold mb-2">🔄 Bimonthly Reset</h4>
+                <h4 className="font-semibold mb-2">🔄 Reset Bimestral</h4>
                 <p className="text-sm text-muted-foreground">
-                  Rewards can be earned each bimester. Your progress resets every two months, 
-                  giving you fresh opportunities to earn rewards.
+                  Recompensas podem ser ganhas a cada bimestre. Seu progresso reinicia a cada dois meses, 
+                  dando novas oportunidades para ganhar recompensas.
                 </p>
               </div>
               <div>
-                <h4 className="font-semibold mb-2">🤝 Partner Companies</h4>
+                <h4 className="font-semibold mb-2">🤝 Empresas Parceiras</h4>
                 <p className="text-sm text-muted-foreground">
-                  Rewards vary depending on our partner companies. New partnerships 
-                  mean new exciting rewards to unlock!
+                  Recompensas variam dependendo de nossas empresas parceiras. Novas parcerias 
+                  significam novas recompensas emocionantes para desbloquear!
                 </p>
               </div>
               <div>
-                <h4 className="font-semibold mb-2">⭐ Tier System</h4>
+                <h4 className="font-semibold mb-2">⭐ Sistema de Níveis</h4>
                 <p className="text-sm text-muted-foreground">
-                  Higher tiers unlock better rewards. Keep improving your grades 
-                  and attendance to reach higher tiers.
+                  Níveis mais altos desbloqueiam melhores recompensas. Continue melhorando suas notas 
+                  e frequência para alcançar níveis mais altos.
                 </p>
               </div>
               <div>
-                <h4 className="font-semibold mb-2">🎯 Fair Play</h4>
+                <h4 className="font-semibold mb-2">🎯 Jogo Justo</h4>
                 <p className="text-sm text-muted-foreground">
-                  All rewards are based on academic performance and attendance. 
-                  Work hard, earn rewards!
+                  Todas as recompensas são baseadas no desempenho acadêmico e frequência. 
+                  Trabalhe duro, ganhe recompensas!
                 </p>
               </div>
             </div>

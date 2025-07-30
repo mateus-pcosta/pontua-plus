@@ -85,7 +85,7 @@ export default function Dashboard() {
                 {(Object.values(studentData.grades).reduce((a, b) => a + b, 0) / Object.values(studentData.grades).length).toFixed(1)}
               </div>
               <p className="text-xs text-muted-foreground mt-2">
-                Above class average ({studentData.classAverage})
+                Acima da média da turma ({studentData.classAverage})
               </p>
             </CardContent>
           </Card>
@@ -116,7 +116,13 @@ export default function Dashboard() {
               {Object.entries(studentData.grades).map(([subject, grade]) => (
                 <div key={subject} className="space-y-2">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium capitalize">{subject}</span>
+                    <span className="text-sm font-medium capitalize">
+                      {subject === 'math' ? 'Matemática' : 
+                       subject === 'portuguese' ? 'Português' : 
+                       subject === 'science' ? 'Ciências' : 
+                       subject === 'history' ? 'História' : 
+                       subject === 'english' ? 'Inglês' : subject}
+                    </span>
                     <span className="text-sm font-bold">{grade.toFixed(1)}</span>
                   </div>
                   <Progress value={(grade / 10) * 100} className="h-2" />
@@ -133,9 +139,9 @@ export default function Dashboard() {
             </CardHeader>
             <CardContent>
               <div className="space-y-6">
-                <div className="space-y-2">
+                  <div className="space-y-2">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium">Your Performance</span>
+                    <span className="text-sm font-medium">Seu Desempenho</span>
                     <span className="text-sm font-bold text-primary">
                       {(Object.values(studentData.grades).reduce((a, b) => a + b, 0) / Object.values(studentData.grades).length).toFixed(1)}
                     </span>
@@ -145,7 +151,7 @@ export default function Dashboard() {
                 
                 <div className="space-y-2">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium">Class Average</span>
+                    <span className="text-sm font-medium">Média da Turma</span>
                     <span className="text-sm font-bold text-muted-foreground">
                       {studentData.classAverage}
                     </span>
@@ -155,7 +161,7 @@ export default function Dashboard() {
                 
                 <div className="space-y-2">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium">School Average</span>
+                    <span className="text-sm font-medium">Média da Escola</span>
                     <span className="text-sm font-bold text-muted-foreground">
                       {studentData.schoolAverage}
                     </span>
