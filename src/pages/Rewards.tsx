@@ -14,24 +14,24 @@ const tierRewards = [
     rewards: [
       { 
         id: 1, 
-        title: "Premium Gaming Setup", 
-        description: "High-end gaming keyboard and mouse", 
+        title: "Setup Gamer Premium", 
+        description: "Teclado e mouse gamer de alta qualidade", 
         partner: "TechStore", 
         unlocked: false,
         image: "🎮"
       },
       { 
         id: 2, 
-        title: "Scholarship Opportunity", 
-        description: "R$ 1000 education scholarship", 
-        partner: "Education Foundation", 
+        title: "Oportunidade de Bolsa", 
+        description: "Bolsa de estudos de R$ 1000", 
+        partner: "Fundação Educacional", 
         unlocked: false,
         image: "🎓"
       },
       { 
         id: 3, 
-        title: "Exclusive Course Access", 
-        description: "Free access to premium online courses", 
+        title: "Acesso a Cursos Exclusivos", 
+        description: "Acesso gratuito a cursos online premium", 
         partner: "LearnTech", 
         unlocked: false,
         image: "💻"
@@ -46,24 +46,24 @@ const tierRewards = [
     rewards: [
       { 
         id: 4, 
-        title: "Bookstore Voucher", 
-        description: "R$ 200 voucher for any bookstore", 
+        title: "Vale Livraria", 
+        description: "Vale de R$ 200 para qualquer livraria", 
         partner: "BookWorld", 
         unlocked: true,
         image: "📚"
       },
       { 
         id: 5, 
-        title: "Cinema Tickets", 
-        description: "4 movie tickets for latest releases", 
+        title: "Ingressos de Cinema", 
+        description: "4 ingressos para os lançamentos mais recentes", 
         partner: "CineMax", 
         unlocked: true,
         image: "🎬"
       },
       { 
         id: 6, 
-        title: "Art Supply Kit", 
-        description: "Professional art supplies set", 
+        title: "Kit de Material de Arte", 
+        description: "Conjunto profissional de materiais de arte", 
         partner: "ArtCraft", 
         unlocked: false,
         image: "🎨"
@@ -78,16 +78,16 @@ const tierRewards = [
     rewards: [
       { 
         id: 7, 
-        title: "Fast Food Combo", 
-        description: "Free meal combo at participating restaurants", 
+        title: "Combo Fast Food", 
+        description: "Combo de refeição grátis em restaurantes participantes", 
         partner: "QuickEats", 
         unlocked: true,
         image: "🍔"
       },
       { 
         id: 8, 
-        title: "Stationery Pack", 
-        description: "Complete set of school supplies", 
+        title: "Kit de Material Escolar", 
+        description: "Conjunto completo de materiais escolares", 
         partner: "StudySupplies", 
         unlocked: true,
         image: "✏️"
@@ -102,8 +102,8 @@ const tierRewards = [
     rewards: [
       { 
         id: 9, 
-        title: "Digital Badge", 
-        description: "Special achievement badge for your profile", 
+        title: "Emblema Digital", 
+        description: "Emblema especial de conquista para seu perfil", 
         partner: "Pontua+", 
         unlocked: true,
         image: "🏅"
@@ -118,12 +118,12 @@ export default function Rewards() {
 
   const getRewardStatus = (minPoints: number, tier: string) => {
     if (currentPoints >= minPoints) {
-      return { unlocked: true, label: "Available", variant: "default" as const };
+      return { unlocked: true, label: "Disponível", variant: "default" as const };
     } else {
       const pointsNeeded = minPoints - currentPoints;
       return { 
         unlocked: false, 
-        label: `${pointsNeeded} pts needed`, 
+        label: `${pointsNeeded} pts necessários`, 
         variant: "secondary" as const 
       };
     }
@@ -165,7 +165,7 @@ export default function Rewards() {
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-secondary">3</div>
-                <div className="text-sm text-muted-foreground">Pontos para Diamond</div>
+                <div className="text-sm text-muted-foreground">Para Diamond</div>
               </div>
             </div>
             
@@ -239,17 +239,17 @@ export default function Rewards() {
                                 {reward.partner}
                               </Badge>
                               
-                              {isUnlocked ? (
+                               {isUnlocked ? (
                                 <Button size="sm" variant="gradient">
                                   <Gift className="h-4 w-4 mr-1" />
                                   Resgatar
                                 </Button>
-                              ) : (
+                               ) : (
                                 <Button size="sm" variant="ghost" disabled>
                                   <Lock className="h-4 w-4 mr-1" />
                                   Bloqueado
                                 </Button>
-                              )}
+                               )}
                             </div>
                           </CardContent>
                         </Card>

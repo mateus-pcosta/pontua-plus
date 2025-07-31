@@ -25,28 +25,13 @@ export const Header = () => {
   const { theme } = useTheme();
 
   useEffect(() => {
-    // Choose logo based on theme - dark logo for light backgrounds, light logo for dark backgrounds
+    // Choose logo based on theme - use dark logo for light theme, light logo for dark theme
     const logoPath = theme === 'dark' 
       ? "/lovable-uploads/6c85cea1-3554-4699-826c-05f108681328.png" // Light logo for dark theme
-      : "/lovable-uploads/6a6db8e8-7eb3-462f-945c-435ea04b49da.png"; // New dark logo for light theme
+      : "/lovable-uploads/6a6db8e8-7eb3-462f-945c-435ea04b49da.png"; // Dark logo for light theme
 
-    // For the new dark logo, don't process it as it doesn't have a white background to remove
-    // Only process the light logo that has a white background
-    if (theme === 'dark') {
-      const processLogo = async () => {
-        try {
-          const processedUrl = await processImageFromUrl(logoPath);
-          setProcessedLogoUrl(processedUrl);
-        } catch (error) {
-          console.error("Failed to process logo:", error);
-          setProcessedLogoUrl(logoPath);
-        }
-      };
-      processLogo();
-    } else {
-      // Use the new dark logo directly without background removal since it doesn't have a white background
-      setProcessedLogoUrl(logoPath);
-    }
+    // Use logos directly without background removal
+    setProcessedLogoUrl(logoPath);
   }, [theme]);
 
   const isActive = (path: string) => location.pathname === path;

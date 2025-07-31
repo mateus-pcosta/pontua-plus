@@ -61,8 +61,14 @@ const tiers = [
 export default function Ranking() {
   const [selectedTier, setSelectedTier] = useState<string | null>(null);
   const currentUserTier = "Gold"; // This would come from user data
+  
+  // Get user's tier index to determine what tiers they can view
+  const currentTierIndex = tiers.findIndex(tier => tier.name === currentUserTier);
+  
+  // Filter tiers to only show current tier and above
+  const visibleTiers = tiers.slice(0, currentTierIndex + 1);
 
-  const selectedTierData = tiers.find(tier => tier.name === selectedTier);
+  const selectedTierData = visibleTiers.find(tier => tier.name === selectedTier);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-accent/10">
@@ -87,7 +93,7 @@ export default function Ranking() {
                 <CardDescription>Clique em um nível para ver o ranking detalhado</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                {tiers.map((tier) => {
+                {visibleTiers.map((tier) => {
                   const Icon = tier.icon;
                   const isCurrentUserTier = tier.name === currentUserTier;
                   const canViewRanking = tier.name !== "Bronze";
@@ -131,7 +137,7 @@ export default function Ranking() {
             </Card>
           </div>
 
-          {/* Tier Details */}
+            {/* Tier Details */}
           <div className="lg:col-span-2">
             {selectedTierData ? (
               <Card className="shadow-card">
