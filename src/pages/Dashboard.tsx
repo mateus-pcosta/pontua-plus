@@ -19,7 +19,14 @@ export default function Dashboard() {
       english: 8.8
     },
     classAverage: 7.2,
-    schoolAverage: 6.8
+    schoolAverage: 6.8,
+    pointsBreakdown: [
+      { source: "Notas/Frequência", points: 38 },
+      { source: "Desempenho Individual", points: 10 },
+      { source: "Sistema de Companheiros", points: 10 },
+      { source: "Participação na OBMEP", points: 5 },
+      { source: "Criação de Conteúdo de Áudio", points: 15 }
+    ]
   };
 
   const getTierColor = (tier: string) => {
@@ -98,8 +105,28 @@ export default function Dashboard() {
             <CardContent>
               <div className="text-2xl font-bold text-secondary">Diamond</div>
               <p className="text-xs text-muted-foreground mt-2">
-                {81 - studentData.currentPoints} points to go
+                {81 - studentData.currentPoints} pontos para o próximo nível
               </p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Points Breakdown Section */}
+        <div className="mb-8">
+          <Card className="shadow-card">
+            <CardHeader>
+              <CardTitle>Distribuição dos Pontos</CardTitle>
+              <CardDescription>Como você conquistou seus {studentData.currentPoints} pontos</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                {studentData.pointsBreakdown.map((item, index) => (
+                  <div key={index} className="flex justify-between items-center p-3 rounded-lg bg-muted/30">
+                    <span className="text-sm font-medium">{item.source}</span>
+                    <span className="text-sm font-bold text-primary">+{item.points} pontos</span>
+                  </div>
+                ))}
+              </div>
             </CardContent>
           </Card>
         </div>
