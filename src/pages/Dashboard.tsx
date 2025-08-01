@@ -147,7 +147,7 @@ export default function Dashboard() {
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
                     <span>Média atual: 7,5</span>
-                    <span className="font-semibold">28 pontos</span>
+                    <span className="font-semibold">25 pontos</span>
                   </div>
                   <div className="text-muted-foreground text-xs">
                     <div>9-10 = 35 pts | 8-8,9 = 32 pts</div>
@@ -160,7 +160,7 @@ export default function Dashboard() {
                 <h4 className="font-semibold mb-2">Frequência (máx. 15 pontos)</h4>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span>Frequência atual: 90%</span>
+                    <span>Frequência atual: 92%</span>
                     <span className="font-semibold">13 pontos</span>
                   </div>
                   <div className="text-muted-foreground text-xs">
@@ -173,7 +173,7 @@ export default function Dashboard() {
               <div className="border-t pt-3">
                 <div className="flex justify-between font-bold">
                   <span>Subtotal Notas/Frequência:</span>
-                  <span>41 pontos</span>
+                  <span>38 pontos</span>
                 </div>
               </div>
             </CardContent>
@@ -190,24 +190,20 @@ export default function Dashboard() {
             <CardContent className="space-y-4">
               <div className="space-y-3">
                 <div className="flex justify-between items-center text-sm">
-                  <span>1. Progresso pessoal/extracurriculares</span>
-                  <span className="font-semibold">8/10</span>
+                  <span>Desempenho Individual</span>
+                  <span className="font-semibold">10 pontos</span>
                 </div>
                 <div className="flex justify-between items-center text-sm">
-                  <span>2. Participação nas aulas</span>
-                  <span className="font-semibold">7/10</span>
+                  <span>Sistema de Companheiros</span>
+                  <span className="font-semibold">10 pontos</span>
                 </div>
                 <div className="flex justify-between items-center text-sm">
-                  <span>3. Colaboração com colegas</span>
-                  <span className="font-semibold">9/10</span>
+                  <span>Participação na OBMEP</span>
+                  <span className="font-semibold">5 pontos</span>
                 </div>
                 <div className="flex justify-between items-center text-sm">
-                  <span>4. Liderança e responsabilidade</span>
-                  <span className="font-semibold">8/10</span>
-                </div>
-                <div className="flex justify-between items-center text-sm">
-                  <span>5. Comportamento positivo</span>
-                  <span className="font-semibold">8/10</span>
+                  <span>Criação de Conteúdo de Áudio</span>
+                  <span className="font-semibold">15 pontos</span>
                 </div>
               </div>
               
@@ -231,12 +227,12 @@ export default function Dashboard() {
           <CardContent>
             <div className="text-center space-y-4">
               <div className="text-3xl font-bold text-primary">
-                81 pontos (100%)
+                78 pontos (100%)
               </div>
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div className="text-center">
                   <div className="font-semibold">Notas e Frequência</div>
-                  <div className="text-2xl font-bold text-blue-600">41</div>
+                  <div className="text-2xl font-bold text-blue-600">38</div>
                   <div className="text-muted-foreground">de 50 pontos</div>
                 </div>
                 <div className="text-center">
