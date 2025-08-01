@@ -15,6 +15,7 @@ const navItems = [
   { name: "Desempenho", href: "/dashboard" },
   { name: "Ranking", href: "/ranking" },
   { name: "Recompensas", href: "/rewards" },
+  { name: "Eventos", href: "/events" },
   { name: "Acessibilidade", href: "/accessibility" },
 ];
 

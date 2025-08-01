@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Ranking from "./pages/Ranking";
 import Rewards from "./pages/Rewards";
+import Events from "./pages/Events";
 import Accessibility from "./pages/Accessibility";
 import NotFound from "./pages/NotFound";
 
@@ -26,6 +27,7 @@ const App = () => (
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/ranking" element={<Ranking />} />
             <Route path="/rewards" element={<Rewards />} />
+            <Route path="/events" element={<Events />} />
             <Route path="/accessibility" element={<Accessibility />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

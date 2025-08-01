@@ -131,6 +131,124 @@ export default function Dashboard() {
           </Card>
         </div>
 
+        {/* Detailed Scoring System */}
+        <div className="grid md:grid-cols-2 gap-6">
+          {/* Notas e Frequência */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Award className="w-5 h-5 text-primary" />
+                Notas e Frequência (50 pontos)
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div>
+                <h4 className="font-semibold mb-2">Notas (máx. 35 pontos)</h4>
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span>Média atual: 7,5</span>
+                    <span className="font-semibold">28 pontos</span>
+                  </div>
+                  <div className="text-muted-foreground text-xs">
+                    <div>9-10 = 35 pts | 8-8,9 = 32 pts</div>
+                    <div>7-7,9 = 28 pts | 6-6,9 = 24 pts</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div>
+                <h4 className="font-semibold mb-2">Frequência (máx. 15 pontos)</h4>
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span>Frequência atual: 90%</span>
+                    <span className="font-semibold">13 pontos</span>
+                  </div>
+                  <div className="text-muted-foreground text-xs">
+                    <div>95-100% = 15 pts | 90-94% = 13 pts</div>
+                    <div>80-89% = 11 pts</div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="border-t pt-3">
+                <div className="flex justify-between font-bold">
+                  <span>Subtotal Notas/Frequência:</span>
+                  <span>41 pontos</span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Evolução e Esforço */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <TrendingUp className="w-5 h-5 text-primary" />
+                Evolução e Esforço (50 pontos)
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-3">
+                <div className="flex justify-between items-center text-sm">
+                  <span>1. Progresso pessoal/extracurriculares</span>
+                  <span className="font-semibold">8/10</span>
+                </div>
+                <div className="flex justify-between items-center text-sm">
+                  <span>2. Participação nas aulas</span>
+                  <span className="font-semibold">7/10</span>
+                </div>
+                <div className="flex justify-between items-center text-sm">
+                  <span>3. Colaboração com colegas</span>
+                  <span className="font-semibold">9/10</span>
+                </div>
+                <div className="flex justify-between items-center text-sm">
+                  <span>4. Liderança e responsabilidade</span>
+                  <span className="font-semibold">8/10</span>
+                </div>
+                <div className="flex justify-between items-center text-sm">
+                  <span>5. Comportamento positivo</span>
+                  <span className="font-semibold">8/10</span>
+                </div>
+              </div>
+              
+              <div className="border-t pt-3">
+                <div className="flex justify-between font-bold">
+                  <span>Subtotal Evolução/Esforço:</span>
+                  <span>40 pontos</span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Final Score Summary */}
+        <Card className="bg-primary/5 border-primary/20">
+          <CardHeader>
+            <CardTitle className="text-center text-xl">
+              Pontuação Final do Aluno
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="text-center space-y-4">
+              <div className="text-3xl font-bold text-primary">
+                81 pontos (100%)
+              </div>
+              <div className="grid grid-cols-2 gap-4 text-sm">
+                <div className="text-center">
+                  <div className="font-semibold">Notas e Frequência</div>
+                  <div className="text-2xl font-bold text-blue-600">41</div>
+                  <div className="text-muted-foreground">de 50 pontos</div>
+                </div>
+                <div className="text-center">
+                  <div className="font-semibold">Evolução e Esforço</div>
+                  <div className="text-2xl font-bold text-green-600">40</div>
+                  <div className="text-muted-foreground">de 50 pontos</div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Detailed Performance */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Grades Breakdown */}
