@@ -116,8 +116,24 @@ export default function Rewards() {
   const currentPoints = 78; // This would come from user data
   const currentTier = "Gold";
 
+  const getTierOrder = (tier: string) => {
+    const order = { "Bronze": 1, "Silver": 2, "Gold": 3, "Diamond": 4 };
+    return order[tier as keyof typeof order] || 0;
+  };
+
+  const getUserTierOrder = () => getTierOrder(currentTier);
+
   const getRewardStatus = (minPoints: number, tier: string) => {
-    if (currentPoints >= minPoints) {
+    const userTierOrder = getUserTierOrder();
+    const rewardTierOrder = getTierOrder(tier);
+    
+    if (rewardTierOrder > userTierOrder) {
+      return { 
+        unlocked: false, 
+        label: `Requer nível ${tier}`, 
+        variant: "destructive" as const 
+      };
+    } else if (currentPoints >= minPoints) {
       return { unlocked: true, label: "Disponível", variant: "default" as const };
     } else {
       const pointsNeeded = minPoints - currentPoints;
@@ -208,7 +224,7 @@ export default function Rewards() {
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {tierData.rewards.map((reward) => {
-                      const isUnlocked = status.unlocked && reward.unlocked;
+                      const isUnlocked = status.unlocked && reward.unlocked && getTierOrder(tierData.tier) <= getUserTierOrder();
                       
                       return (
                         <Card 
