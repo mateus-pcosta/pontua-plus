@@ -88,9 +88,7 @@ export default function Dashboard() {
               <TrendingUp className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-primary">
-                {(Object.values(studentData.grades).reduce((a, b) => a + b, 0) / Object.values(studentData.grades).length).toFixed(1)}
-              </div>
+              <div className="text-2xl font-bold text-primary">7.5</div>
               <p className="text-xs text-muted-foreground mt-2">
                 Acima da média da turma ({studentData.classAverage})
               </p>
@@ -283,9 +281,7 @@ export default function Dashboard() {
                   <div className="space-y-2">
                   <div className="flex justify-between items-center">
                     <span className="text-sm font-medium">Seu Desempenho</span>
-                    <span className="text-sm font-bold text-primary">
-                      {(Object.values(studentData.grades).reduce((a, b) => a + b, 0) / Object.values(studentData.grades).length).toFixed(1)}
-                    </span>
+                    <span className="text-sm font-bold text-primary">7.5</span>
                   </div>
                   <Progress value={85} className="h-3" />
                 </div>

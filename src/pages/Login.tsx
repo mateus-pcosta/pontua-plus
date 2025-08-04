@@ -26,7 +26,7 @@ export default function Login() {
             <img 
               src={processedLogoUrl}
               alt="Pontua+" 
-              className="h-24 w-auto"
+              className="h-32 w-auto"
             />
           </div>
           <CardTitle className="text-2xl font-semibold">
