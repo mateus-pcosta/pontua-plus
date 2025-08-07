@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const tiers = [
   {
-    name: "Diamond",
+    name: "Diamante",
     range: "81-100",
     icon: Star,
     color: "bg-diamond",
@@ -21,7 +21,7 @@ const tiers = [
     ]
   },
   {
-    name: "Gold",
+    name: "Ouro",
     range: "65-80",
     icon: Trophy,
     color: "bg-gold",
@@ -35,7 +35,7 @@ const tiers = [
     ]
   },
   {
-    name: "Silver",
+    name: "Prata",
     range: "26-64",
     icon: Medal,
     color: "bg-silver",
@@ -60,7 +60,7 @@ const tiers = [
 
 export default function Ranking() {
   const [selectedTier, setSelectedTier] = useState<string | null>(null);
-  const currentUserTier = "Gold"; // This would come from user data
+  const currentUserTier = "Ouro"; // This would come from user data
   
   // Get user's tier index to determine what tiers they can access
   const currentTierIndex = tiers.findIndex(tier => tier.name === currentUserTier);
@@ -112,7 +112,7 @@ export default function Ranking() {
                         <Icon className="h-6 w-6" />
                         <div className="text-left">
                           <div className="font-semibold">{tier.name}</div>
-                          <div className="text-sm opacity-90">{tier.range} points</div>
+                          <div className="text-sm opacity-90">{tier.range} pontos</div>
                         </div>
                       </div>
                       <div className="text-right">
@@ -130,7 +130,7 @@ export default function Ranking() {
                 
                 <div className="mt-4 p-3 bg-muted rounded-lg">
                   <p className="text-sm text-muted-foreground">
-                    💡 <strong>Nota:</strong> Rankings do nível Bronze estão ocultos para encorajar melhorias sem constrangimento.
+                    💡 Rankings do nível abaixo do seu estão ocultos para encorajar melhorias sem constrangimento.
                   </p>
                 </div>
               </CardContent>
@@ -199,7 +199,7 @@ export default function Ranking() {
                             </div>
                           </div>
                           <div className="text-right">
-                            <div className="font-bold text-primary">{student.points} pts</div>
+                            <div className="font-bold text-primary">{student.points} pontos</div>
                           </div>
                         </div>
                       ))}

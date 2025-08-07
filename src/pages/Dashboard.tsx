@@ -12,11 +12,11 @@ export default function Dashboard() {
     tier: "Gold",
     attendance: 92,
     grades: {
-      math: 8.5,
-      portuguese: 9.0,
-      science: 7.8,
-      history: 8.2,
-      english: 8.8
+      math: 7.5,
+      portuguese: 7.8,
+      science: 7.2,
+      history: 7.3,
+      english: 7.7
     },
     classAverage: 7.2,
     schoolAverage: 6.8,
@@ -149,7 +149,7 @@ export default function Dashboard() {
                   </div>
                   <div className="text-muted-foreground text-xs">
                     <div>9-10 = 35 pts | 8-8,9 = 32 pts</div>
-                    <div>7-7,9 = 28 pts | 6-6,9 = 24 pts</div>
+                    <div>7-7,9 = 25 pts | 6-6,9 = 20 pts</div>
                   </div>
                 </div>
               </div>
