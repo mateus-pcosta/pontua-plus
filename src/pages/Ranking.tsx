@@ -130,7 +130,7 @@ export default function Ranking() {
                 
                 <div className="mt-4 p-3 bg-muted rounded-lg">
                   <p className="text-sm text-muted-foreground">
-                    💡 Rankings do nível abaixo do seu estão ocultos para encorajar melhorias sem constrangimento.
+                    💡Nota: Rankings do nível abaixo do seu estão ocultos para encorajar melhorias sem constrangimento.
                   </p>
                 </div>
               </CardContent>
