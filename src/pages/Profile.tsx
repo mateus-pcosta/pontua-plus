@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { processImageFromUrl } from "@/lib/backgroundRemoval";
 import { useTheme } from "@/components/theme-provider";
@@ -50,8 +53,23 @@ const Profile = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-primary flex flex-col items-center justify-center p-4">
+    <div className="min-h-screen gradient-primary flex flex-col items-center justify-center p-4">
       <div className="w-full max-w-4xl space-y-6">
+        {/* Back Button */}
+        <div className="flex justify-start mb-4">
+          <Button 
+            asChild 
+            variant="outline" 
+            size="sm"
+            className="bg-white/10 border-white/20 text-white hover:bg-white/20 hover:text-white"
+          >
+            <Link to="/dashboard" className="flex items-center space-x-2">
+              <ArrowLeft className="h-4 w-4" />
+              <span>Voltar ao Dashboard</span>
+            </Link>
+          </Button>
+        </div>
+
         {/* Header */}
         <div className="text-center mb-8">
           <img 
