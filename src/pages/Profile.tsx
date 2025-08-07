@@ -15,19 +15,15 @@ const Profile = () => {
   const { theme } = useTheme();
 
   useEffect(() => {
-    // Choose logo based on theme - use dark logo for light theme, light logo for dark theme
-    const logoPath = theme === 'dark' 
-      ? "/lovable-uploads/6c85cea1-3554-4699-826c-05f108681328.png" // Light logo for dark theme
-      : "/lovable-uploads/6a6db8e8-7eb3-462f-945c-435ea04b49da.png"; // Dark logo for light theme
-
-    // Use logos directly without background removal
+    // Always use the white logo
+    const logoPath = "/lovable-uploads/6c85cea1-3554-4699-826c-05f108681328.png"; // White logo
     setProcessedLogoUrl(logoPath);
   }, [theme]);
 
   // Mock user data - in a real app this would come from authentication/database
   const userRole = "Aluno"; // Could be "Aluno", "Professor", or "Diretor"
   const userData = {
-    nome: "João Silva Santos",
+    nome: "Maria Silva",
     cpf: "123.456.789-01",
     rg: "12.345.678-9",
     telefone: "(11) 99999-9999",
@@ -65,7 +61,7 @@ const Profile = () => {
           >
             <Link to="/dashboard" className="flex items-center space-x-2">
               <ArrowLeft className="h-4 w-4" />
-              <span>Voltar ao Dashboard</span>
+              <span>Voltar ao Início</span>
             </Link>
           </Button>
         </div>
