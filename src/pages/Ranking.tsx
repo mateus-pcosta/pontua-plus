@@ -7,7 +7,7 @@ import { useState } from "react";
 
 const tiers = [
   {
-    name: "Diamante",
+    name: "Diamond",
     range: "81-100",
     icon: Star,
     color: "bg-diamond",
@@ -21,7 +21,7 @@ const tiers = [
     ]
   },
   {
-    name: "Ouro",
+    name: "Gold",
     range: "65-80",
     icon: Trophy,
     color: "bg-gold",
@@ -35,7 +35,7 @@ const tiers = [
     ]
   },
   {
-    name: "Prata",
+    name: "Silver",
     range: "26-64",
     icon: Medal,
     color: "bg-silver",
@@ -60,7 +60,7 @@ const tiers = [
 
 export default function Ranking() {
   const [selectedTier, setSelectedTier] = useState<string | null>(null);
-  const currentUserTier = "Ouro"; // This would come from user data
+  const currentUserTier = "Gold"; // This would come from user data
   
   // Get user's tier index to determine what tiers they can access
   const currentTierIndex = tiers.findIndex(tier => tier.name === currentUserTier);
