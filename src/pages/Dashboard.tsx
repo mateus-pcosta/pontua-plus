@@ -65,7 +65,7 @@ export default function Dashboard() {
               <div className="text-2xl font-bold text-primary">{studentData.currentPoints}</div>
               <div className="flex items-center space-x-2 mt-2">
                 <Badge className={getTierColor(studentData.tier)}>
-                  {studentData.tier} Tier
+                  Nível {studentData.tier}
                 </Badge>
               </div>
             </CardContent>
