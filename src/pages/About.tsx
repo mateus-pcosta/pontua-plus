@@ -37,49 +37,74 @@ const About = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="bg-gradient-to-r from-primary to-primary-variant text-white py-8">
-        <div className="container mx-auto px-4">
+      <div className="gradient-primary text-white py-12 relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 right-20 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-20 w-80 h-80 bg-white rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
           <Button
             variant="ghost"
             onClick={() => navigate("/")}
-            className="text-white hover:bg-white/10 mb-4"
+            className="text-white hover:bg-white/10 mb-6 transition-smooth"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Voltar ao Início
           </Button>
-          <h1 className="text-4xl font-bold">O que é o Pontua+?</h1>
+          
+          <div className="flex items-center gap-6 mb-4">
+            <img 
+              src="/lovable-uploads/6a6db8e8-7eb3-462f-945c-435ea04b49da.png"
+              alt="Pontua+" 
+              className="h-16 w-auto"
+            />
+            <h1 className="text-4xl md:text-5xl font-bold drop-shadow-lg">O que é o Pontua+?</h1>
+          </div>
+          
+          <p className="text-xl text-white/90 max-w-3xl leading-relaxed drop-shadow-sm">
+            Descubra como nossa plataforma está revolucionando a educação através da gamificação
+          </p>
         </div>
       </div>
 
       <div className="container mx-auto px-4 py-8 space-y-8">
         {/* Introduction */}
-        <Card>
-          <CardContent className="p-8">
-            <p className="text-lg leading-relaxed text-muted-foreground">
+        <Card className="shadow-elegant border-0 gradient-card">
+          <CardContent className="p-10">
+            <p className="text-lg leading-relaxed text-foreground font-medium">
               Pontua+ é uma plataforma de gamificação educacional que transforma o aprendizado em uma experiência mais motivadora. Os estudantes acumulam pontos e avançam em níveis de desempenho de acordo com suas conquistas acadêmicas e participações em atividades. A cada progresso, podem subir no ranking e desbloquear recompensas de acordo com sua pontuação. Além de promover engajamento, o sistema valoriza a colaboração por meio de atividades coletivas e inclusão social. O principal objetivo da plataforma é reduzir a evasão escolar, mantendo o aluno ativo e interessado até a conclusão do ensino médio, ao mesmo tempo em que o prepara para os desafios futuros acadêmicos e profissionais.
             </p>
           </CardContent>
         </Card>
 
         {/* Platform Overview */}
-        <Card>
+        <Card className="shadow-elegant border-0">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2">
-              <Target className="w-6 h-6 text-primary" />
+            <CardTitle className="text-2xl flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center">
+                <Target className="w-5 h-5 text-white" />
+              </div>
               Conheça a Plataforma Pontua+: Reconhecendo Esforços Além da Sala de Aula
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-muted-foreground leading-relaxed text-lg">
               O Pontua+ é uma plataforma inovadora que transforma o desempenho acadêmico e a participação em atividades extracurriculares em uma experiência motivadora e recompensadora. Por meio de um sistema de pontuação, rankings e benefícios, valorizamos cada conquista do aluno, dentro e fora da escola.
             </p>
           </CardContent>
         </Card>
 
         {/* How Points Work */}
-        <Card>
+        <Card className="shadow-elegant border-0">
           <CardHeader>
-            <CardTitle className="text-2xl">Como Funciona a Pontuação?</CardTitle>
+            <CardTitle className="text-2xl flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center">
+                <Calendar className="w-5 h-5 text-white" />
+              </div>
+              Como Funciona a Pontuação?
+            </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
             <p className="text-muted-foreground">
@@ -140,10 +165,12 @@ const About = () => {
         </Card>
 
         {/* Ranking System */}
-        <Card>
+        <Card className="shadow-elegant border-0">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2">
-              <Trophy className="w-6 h-6 text-primary" />
+            <CardTitle className="text-2xl flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center">
+                <Trophy className="w-5 h-5 text-white" />
+              </div>
               Sistema de Rankings: Sua Jornada de Evolução
             </CardTitle>
           </CardHeader>
@@ -168,10 +195,12 @@ const About = () => {
         </Card>
 
         {/* Rewards */}
-        <Card>
+        <Card className="shadow-elegant border-0">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2">
-              <Gift className="w-6 h-6 text-primary" />
+            <CardTitle className="text-2xl flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center">
+                <Gift className="w-5 h-5 text-white" />
+              </div>
               Recompensas que Impulsionam
             </CardTitle>
           </CardHeader>
@@ -190,10 +219,12 @@ const About = () => {
         </Card>
 
         {/* Accessibility */}
-        <Card>
+        <Card className="shadow-elegant border-0">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2">
-              <Heart className="w-6 h-6 text-primary" />
+            <CardTitle className="text-2xl flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center">
+                <Heart className="w-5 h-5 text-white" />
+              </div>
               Acessibilidade e Inclusão para Todos
             </CardTitle>
           </CardHeader>
@@ -210,10 +241,12 @@ const About = () => {
         </Card>
 
         {/* Advantages */}
-        <Card>
+        <Card className="shadow-elegant border-0">
           <CardHeader>
-            <CardTitle className="text-2xl flex items-center gap-2">
-              <Star className="w-6 h-6 text-primary" />
+            <CardTitle className="text-2xl flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center">
+                <Star className="w-5 h-5 text-white" />
+              </div>
               Vantagens do Pontua+
             </CardTitle>
           </CardHeader>
@@ -230,15 +263,26 @@ const About = () => {
         </Card>
 
         {/* Conclusion */}
-        <Card className="bg-gradient-to-r from-primary/10 to-primary-variant/10">
-          <CardContent className="p-8 text-center">
-            <p className="text-lg font-medium text-muted-foreground">
+        <Card className="gradient-primary text-white shadow-elegant border-0 relative overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute -top-10 -right-10 w-40 h-40 bg-white rounded-full blur-2xl"></div>
+            <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-white rounded-full blur-2xl"></div>
+          </div>
+          <CardContent className="p-12 text-center relative z-10">
+            <div className="flex justify-center mb-6">
+              <img 
+                src="/lovable-uploads/6a6db8e8-7eb3-462f-945c-435ea04b49da.png"
+                alt="Pontua+" 
+                className="h-16 w-auto"
+              />
+            </div>
+            <p className="text-xl font-medium text-white/95 mb-8 leading-relaxed drop-shadow-sm">
               O Pontua+ é mais que uma plataforma; é uma ferramenta para construir um futuro onde cada esforço é visto, celebrado e recompensado.
             </p>
             <Button 
               onClick={() => navigate("/login")} 
-              className="mt-6"
               size="lg"
+              className="bg-white text-primary hover:bg-white/90 shadow-elegant transition-smooth hover:scale-105 px-8 py-4 text-lg font-semibold"
             >
               Entrar na Plataforma
             </Button>

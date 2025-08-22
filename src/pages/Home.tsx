@@ -30,23 +30,32 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary via-primary-variant to-primary-deep relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 bg-gradient-subtle opacity-20"></div>
+    <div className="min-h-screen gradient-primary relative overflow-hidden">
+      {/* Background decoration with subtle patterns */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-white rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+      </div>
       
-      <div className="relative z-10 container mx-auto px-4 py-8">
-        {/* Header */}
-        <div className="text-center mb-4">
-          <div className="text-white/90 font-medium text-lg">Pontua</div>
+      <div className="relative z-10 container mx-auto px-4 py-12">
+        {/* Logo and Header */}
+        <div className="text-center mb-8">
+          <div className="flex justify-center mb-6">
+            <img 
+              src="/lovable-uploads/6a6db8e8-7eb3-462f-945c-435ea04b49da.png"
+              alt="Pontua+" 
+              className="h-24 w-auto drop-shadow-lg"
+            />
+          </div>
         </div>
 
         {/* Main content */}
-        <div className="text-center text-white mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-white/80 bg-clip-text text-transparent">
+        <div className="text-center text-white mb-20">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white drop-shadow-lg">
             Bem-vindo ao Pontua+
           </h1>
           
-          <p className="text-lg md:text-xl max-w-4xl mx-auto mb-12 text-white/90 leading-relaxed">
+          <p className="text-lg md:text-xl max-w-4xl mx-auto mb-12 text-white/95 leading-relaxed drop-shadow-sm">
             A plataforma educacional gamificada que transforma o aprendizado em uma experiência divertida e motivadora para estudantes, professores e responsáveis.
           </p>
 
@@ -55,7 +64,7 @@ const Home = () => {
             <Button
               onClick={() => navigate("/login")}
               size="lg"
-              className="bg-white/10 text-white border border-white/20 hover:bg-white/20 backdrop-blur-sm px-8 py-3 text-lg font-semibold rounded-xl shadow-elegant"
+              className="bg-white text-primary hover:bg-white/90 shadow-elegant px-8 py-4 text-lg font-semibold transition-smooth hover:scale-105"
             >
               Entrar na Plataforma →
             </Button>
@@ -63,7 +72,7 @@ const Home = () => {
               onClick={() => navigate("/about")}
               variant="outline"
               size="lg"
-              className="border-white/30 text-white hover:bg-white/10 backdrop-blur-sm px-8 py-3 text-lg font-semibold rounded-xl"
+              className="border-2 border-white/40 text-white hover:bg-white/10 backdrop-blur-sm px-8 py-4 text-lg font-semibold transition-smooth hover:scale-105"
             >
               Saiba Mais
             </Button>
@@ -71,19 +80,21 @@ const Home = () => {
         </div>
 
         {/* Features grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
-              <Card key={index} className="bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/15 transition-all duration-300 hover:scale-105 shadow-card">
-                <CardContent className="p-6 text-center">
-                  <div className="mb-4 flex justify-center">
-                    <Icon className="w-12 h-12 text-white/90" strokeWidth={1.5} />
+              <Card key={index} className="bg-white/95 backdrop-blur-sm border-0 text-foreground hover:bg-white transition-all duration-300 hover:scale-105 shadow-elegant group">
+                <CardContent className="p-8 text-center">
+                  <div className="mb-6 flex justify-center">
+                    <div className="w-16 h-16 rounded-full gradient-primary flex items-center justify-center group-hover:scale-110 transition-smooth shadow-elegant">
+                      <Icon className="w-8 h-8 text-white" strokeWidth={1.5} />
+                    </div>
                   </div>
-                  <h3 className="text-lg font-bold mb-3 text-white">
+                  <h3 className="text-xl font-bold mb-4 text-foreground">
                     {feature.title}
                   </h3>
-                  <p className="text-sm text-white/80 leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed">
                     {feature.description}
                   </p>
                 </CardContent>
