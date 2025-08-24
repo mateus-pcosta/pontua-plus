@@ -56,9 +56,9 @@ const About = () => {
           
           <div className="flex items-center gap-6 mb-4">
             <img 
-              src="/lovable-uploads/6a6db8e8-7eb3-462f-945c-435ea04b49da.png"
+              src="/lovable-uploads/6c85cea1-3554-4699-826c-05f108681328.png"
               alt="Pontua+" 
-              className="h-16 w-auto"
+              className="h-32 w-auto"
             />
             <h1 className="text-4xl md:text-5xl font-bold drop-shadow-lg">O que é o Pontua+?</h1>
           </div>
@@ -271,9 +271,9 @@ const About = () => {
           <CardContent className="p-12 text-center relative z-10">
             <div className="flex justify-center mb-6">
               <img 
-                src="/lovable-uploads/6a6db8e8-7eb3-462f-945c-435ea04b49da.png"
+                src="/lovable-uploads/6c85cea1-3554-4699-826c-05f108681328.png"
                 alt="Pontua+" 
-                className="h-16 w-auto"
+                className="h-28 w-auto"
               />
             </div>
             <p className="text-xl font-medium text-white/95 mb-8 leading-relaxed drop-shadow-sm">

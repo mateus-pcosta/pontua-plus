@@ -42,9 +42,9 @@ const Home = () => {
         <div className="text-center mb-8">
           <div className="flex justify-center mb-6">
             <img 
-              src="/lovable-uploads/6a6db8e8-7eb3-462f-945c-435ea04b49da.png"
+              src="/lovable-uploads/6c85cea1-3554-4699-826c-05f108681328.png"
               alt="Pontua+" 
-              className="h-24 w-auto drop-shadow-lg"
+              className="h-40 w-auto drop-shadow-lg"
             />
           </div>
         </div>
