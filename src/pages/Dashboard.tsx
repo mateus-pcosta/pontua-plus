@@ -2,9 +2,13 @@ import { Header } from "@/components/layout/Header";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { TrendingUp, Calendar, Target, Award } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { TrendingUp, Calendar, Target, Award, BarChart3, Users, BookOpen } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
+  const navigate = useNavigate();
+  
   // Mock data - in real app this would come from API
   const studentData = {
     name: "Maria Silva",
@@ -73,25 +77,23 @@ export default function Dashboard() {
 
           <Card className="shadow-card hover:shadow-elegant transition-smooth">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Frequência</CardTitle>
-              <Calendar className="h-4 w-4 text-muted-foreground" />
+              <CardTitle className="text-sm font-medium">Notas e Frequência</CardTitle>
+              <BookOpen className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-primary">{studentData.attendance}%</div>
-              <Progress value={studentData.attendance} className="mt-2" />
+              <div className="text-2xl font-bold text-primary">38/50</div>
+              <Progress value={76} className="mt-2" />
             </CardContent>
           </Card>
 
           <Card className="shadow-card hover:shadow-elegant transition-smooth">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Nota Média</CardTitle>
+              <CardTitle className="text-sm font-medium">Evolução e Esforço</CardTitle>
               <TrendingUp className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold text-primary">7.5</div>
-              <p className="text-xs text-muted-foreground mt-2">
-                Acima da média da turma ({studentData.classAverage})
-              </p>
+              <div className="text-2xl font-bold text-primary">40/50</div>
+              <Progress value={80} className="mt-2" />
             </CardContent>
           </Card>
 
@@ -109,86 +111,139 @@ export default function Dashboard() {
           </Card>
         </div>
 
-        {/* Points Breakdown Section */}
-        <div className="mb-8">
+        {/* Evolution and Monthly Stats */}
+        <div className="grid md:grid-cols-2 gap-6 mb-8">
+          {/* Evolução das Notas */}
           <Card className="shadow-card">
             <CardHeader>
-              <CardTitle>Distribuição dos Pontos</CardTitle>
-              <CardDescription>Como você conquistou seus {studentData.currentPoints} pontos</CardDescription>
+              <CardTitle className="flex items-center gap-2">
+                <BarChart3 className="w-5 h-5 text-primary" />
+                Evolução das Notas
+              </CardTitle>
+              <CardDescription>Comparação com a média da turma</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="space-y-3">
-                {studentData.pointsBreakdown.map((item, index) => (
-                  <div key={index} className="flex justify-between items-center p-3 rounded-lg bg-muted/30">
-                    <span className="text-sm font-medium">{item.source}</span>
-                    <span className="text-sm font-bold text-primary">+{item.points} pontos</span>
+              <div className="space-y-6">
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm font-medium">Seu Desempenho</span>
+                    <span className="text-sm font-bold text-primary">7.5</span>
                   </div>
-                ))}
+                  <Progress value={75} className="h-3" />
+                </div>
+                
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm font-medium">Média da Turma</span>
+                    <span className="text-sm font-bold text-muted-foreground">7.2</span>
+                  </div>
+                  <Progress value={72} className="h-3" />
+                </div>
+                
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm font-medium">Média da Escola</span>
+                    <span className="text-sm font-bold text-muted-foreground">6.8</span>
+                  </div>
+                  <Progress value={68} className="h-3" />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Frequência Mensal */}
+          <Card className="shadow-card">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Calendar className="w-5 h-5 text-primary" />
+                Frequência Mensal
+              </CardTitle>
+              <CardDescription>Presença e faltas por mês</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm">Janeiro</span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm text-green-600">18 presenças</span>
+                    <span className="text-sm text-red-500">2 faltas</span>
+                  </div>
+                </div>
+                <Progress value={90} className="h-2" />
+                
+                <div className="flex justify-between items-center">
+                  <span className="text-sm">Fevereiro</span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm text-green-600">19 presenças</span>
+                    <span className="text-sm text-red-500">1 falta</span>
+                  </div>
+                </div>
+                <Progress value={95} className="h-2" />
+                
+                <div className="flex justify-between items-center">
+                  <span className="text-sm">Março</span>
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm text-green-600">17 presenças</span>
+                    <span className="text-sm text-red-500">3 faltas</span>
+                  </div>
+                </div>
+                <Progress value={85} className="h-2" />
               </div>
             </CardContent>
           </Card>
         </div>
 
-        {/* Detailed Scoring System */}
-        <div className="grid md:grid-cols-2 gap-6">
-          {/* Notas e Frequência */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Award className="w-5 h-5 text-primary" />
-                Notas e Frequência (50 pontos)
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div>
-                <h4 className="font-semibold mb-2">Notas (máx. 35 pontos)</h4>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span>Média atual: 7,5</span>
-                    <span className="font-semibold">25 pontos</span>
-                  </div>
-                  <div className="text-muted-foreground text-xs">
-                    <div>9-10 = 35 pts | 8-8,9 = 32 pts</div>
-                    <div>7-7,9 = 25 pts | 6-6,9 = 20 pts</div>
-                  </div>
-                </div>
-              </div>
+        {/* Detalhamento da Pontuação */}
+        <Card className="mb-8 shadow-card">
+          <CardHeader>
+            <CardTitle className="text-xl font-bold">Detalhamento da Pontuação</CardTitle>
+            <CardDescription>Sistema de pontuação Pontua+ (máximo 100 pontos)</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            {/* Notas e Frequência */}
+            <div className="border rounded-lg p-4 bg-muted/30">
+              <h3 className="font-bold text-lg mb-4 text-primary">Notas e Frequência (50 pontos)</h3>
               
-              <div>
-                <h4 className="font-semibold mb-2">Frequência (máx. 15 pontos)</h4>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between">
-                    <span>Frequência atual: 92%</span>
-                    <span className="font-semibold">13 pontos</span>
-                  </div>
-                  <div className="text-muted-foreground text-xs">
-                    <div>95-100% = 15 pts | 90-94% = 13 pts</div>
-                    <div>80-89% = 11 pts</div>
+              <div className="grid md:grid-cols-2 gap-4">
+                {/* Notas */}
+                <div className="space-y-3">
+                  <h4 className="font-semibold">Notas (máx. 35 pts)</h4>
+                  <div className="space-y-2">
+                    <Progress value={(25/35) * 100} className="h-3" />
+                    <div className="flex justify-between text-sm">
+                      <span className="font-medium">25/35</span>
+                      <span className="text-muted-foreground">71%</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                      Média 7,5 = 25 pontos
+                    </p>
                   </div>
                 </div>
-              </div>
-              
-              <div className="border-t pt-3">
-                <div className="flex justify-between font-bold">
-                  <span>Subtotal Notas/Frequência:</span>
-                  <span>38 pontos</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
 
-          {/* Evolução e Esforço */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <TrendingUp className="w-5 h-5 text-primary" />
-                Evolução e Esforço (50 pontos)
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
+                {/* Frequência */}
+                <div className="space-y-3">
+                  <h4 className="font-semibold">Frequência (máx. 15 pts)</h4>
+                  <div className="space-y-2">
+                    <Progress value={(13/15) * 100} className="h-3" />
+                    <div className="flex justify-between text-sm">
+                      <span className="font-medium">13/15</span>
+                      <span className="text-muted-foreground">87%</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                      92% de frequência = 13 pontos
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Evolução e Esforço */}
+            <div className="border rounded-lg p-4 bg-muted/30">
+              <h3 className="font-bold text-lg mb-4 text-primary">Evolução e Esforço</h3>
+              
               <div className="space-y-3">
                 <div className="flex justify-between items-center text-sm">
-                  <span>Desempenho Individual</span>
+                  <span>Líder de Turma</span>
                   <span className="font-semibold">10 pontos</span>
                 </div>
                 <div className="flex justify-between items-center text-sm">
@@ -203,112 +258,54 @@ export default function Dashboard() {
                   <span>Criação de Conteúdo de Áudio</span>
                   <span className="font-semibold">15 pontos</span>
                 </div>
-              </div>
-              
-              <div className="border-t pt-3">
-                <div className="flex justify-between font-bold">
-                  <span>Subtotal Evolução/Esforço:</span>
-                  <span>40 pontos</span>
+                
+                <div className="border-t pt-3 mt-4">
+                  <div className="flex justify-between font-bold">
+                    <span>Subtotal Evolução/Esforço:</span>
+                    <span>40/50</span>
+                  </div>
+                  <Progress value={80} className="h-3 mt-2" />
                 </div>
               </div>
-            </CardContent>
-          </Card>
-        </div>
+            </div>
 
-        {/* Final Score Summary */}
-        <Card className="bg-primary/5 border-primary/20">
-          <CardHeader>
-            <CardTitle className="text-center text-xl">
-              Pontuação Final do Aluno
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="text-center space-y-4">
-              <div className="text-3xl font-bold text-primary">
-                78 pontos (100%)
-              </div>
-              <div className="grid grid-cols-2 gap-4 text-sm">
-                <div className="text-center">
-                  <div className="font-semibold">Notas e Frequência</div>
-                  <div className="text-2xl font-bold text-blue-600">38</div>
-                  <div className="text-muted-foreground">de 50 pontos</div>
-                </div>
-                <div className="text-center">
-                  <div className="font-semibold">Evolução e Esforço</div>
-                  <div className="text-2xl font-bold text-green-600">40</div>
-                  <div className="text-muted-foreground">de 50 pontos</div>
-                </div>
-              </div>
+            {/* Botão Como Funciona */}
+            <div className="text-center pt-4">
+              <Button 
+                variant="outline" 
+                onClick={() => navigate('/about')}
+                className="hover:bg-primary hover:text-primary-foreground"
+              >
+                Como funciona a distribuição de pontos?
+              </Button>
             </div>
           </CardContent>
         </Card>
 
         {/* Detailed Performance */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Grades Breakdown */}
-          <Card className="shadow-card">
-            <CardHeader>
-              <CardTitle>Desempenho por Matéria</CardTitle>
-              <CardDescription>Suas notas bimestrais mais recentes</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {Object.entries(studentData.grades).map(([subject, grade]) => (
-                <div key={subject} className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium capitalize">
-                      {subject === 'math' ? 'Matemática' : 
-                       subject === 'portuguese' ? 'Português' : 
-                       subject === 'science' ? 'Ciências' : 
-                       subject === 'history' ? 'História' : 
-                       subject === 'english' ? 'Inglês' : subject}
-                    </span>
-                    <span className="text-sm font-bold">{grade.toFixed(1)}</span>
-                  </div>
-                  <Progress value={(grade / 10) * 100} className="h-2" />
+        <Card className="shadow-card">
+          <CardHeader>
+            <CardTitle>Desempenho por Matéria</CardTitle>
+            <CardDescription>Suas notas bimestrais mais recentes</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {Object.entries(studentData.grades).map(([subject, grade]) => (
+              <div key={subject} className="space-y-2">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm font-medium capitalize">
+                    {subject === 'math' ? 'Matemática' : 
+                     subject === 'portuguese' ? 'Português' : 
+                     subject === 'science' ? 'Ciências' : 
+                     subject === 'history' ? 'História' : 
+                     subject === 'english' ? 'Inglês' : subject}
+                  </span>
+                  <span className="text-sm font-bold">{grade.toFixed(1)}</span>
                 </div>
-              ))}
-            </CardContent>
-          </Card>
-
-          {/* Comparison Chart */}
-          <Card className="shadow-card">
-            <CardHeader>
-              <CardTitle>Comparação de Desempenho</CardTitle>
-              <CardDescription>Como você se compara às médias</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-6">
-                  <div className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium">Seu Desempenho</span>
-                    <span className="text-sm font-bold text-primary">7.5</span>
-                  </div>
-                  <Progress value={85} className="h-3" />
-                </div>
-                
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium">Média da Turma</span>
-                    <span className="text-sm font-bold text-muted-foreground">
-                      {studentData.classAverage}
-                    </span>
-                  </div>
-                  <Progress value={72} className="h-3" />
-                </div>
-                
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium">Média da Escola</span>
-                    <span className="text-sm font-bold text-muted-foreground">
-                      {studentData.schoolAverage}
-                    </span>
-                  </div>
-                  <Progress value={68} className="h-3" />
-                </div>
+                <Progress value={(grade / 10) * 100} className="h-2" />
               </div>
-            </CardContent>
-          </Card>
-        </div>
+            ))}
+          </CardContent>
+        </Card>
       </main>
     </div>
   );
