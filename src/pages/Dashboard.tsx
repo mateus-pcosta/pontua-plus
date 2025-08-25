@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { TrendingUp, Calendar, Target, Award, BarChart3, Users, BookOpen } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, Legend } from 'recharts';
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -32,6 +33,26 @@ export default function Dashboard() {
       { source: "Criação de Conteúdo de Áudio", points: 15 }
     ]
   };
+
+  // Chart data for grade evolution
+  const gradeEvolutionData = [
+    { mes: 'Jan', estudante: 7.2, turma: 6.8, escola: 6.5 },
+    { mes: 'Fev', estudante: 7.3, turma: 7.0, escola: 6.6 },
+    { mes: 'Mar', estudante: 7.5, turma: 7.2, escola: 6.8 },
+    { mes: 'Abr', estudante: 7.4, turma: 7.1, escola: 6.7 },
+    { mes: 'Mai', estudante: 7.6, turma: 7.2, escola: 6.9 },
+    { mes: 'Jun', estudante: 7.5, turma: 7.2, escola: 6.8 }
+  ];
+
+  // Chart data for monthly attendance
+  const attendanceData = [
+    { mes: 'Jan', presencas: 18, faltas: 2, total: 20 },
+    { mes: 'Fev', presencas: 19, faltas: 1, total: 20 },
+    { mes: 'Mar', presencas: 17, faltas: 3, total: 20 },
+    { mes: 'Abr', presencas: 19, faltas: 1, total: 20 },
+    { mes: 'Mai', presencas: 18, faltas: 2, total: 20 },
+    { mes: 'Jun', presencas: 20, faltas: 0, total: 20 }
+  ];
 
   const getTierColor = (tier: string) => {
     switch (tier.toLowerCase()) {
@@ -114,45 +135,72 @@ export default function Dashboard() {
         {/* Evolution and Monthly Stats */}
         <div className="grid md:grid-cols-2 gap-6 mb-8">
           {/* Evolução das Notas */}
-          <Card className="shadow-card">
+          <Card className="shadow-card hover:scale-105 transition-smooth">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <BarChart3 className="w-5 h-5 text-primary" />
                 Evolução das Notas
               </CardTitle>
-              <CardDescription>Comparação com a média da turma</CardDescription>
+              <CardDescription>Comparação com a média da turma e escola</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="space-y-6">
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium">Seu Desempenho</span>
-                    <span className="text-sm font-bold text-primary">7.5</span>
-                  </div>
-                  <Progress value={75} className="h-3" />
-                </div>
-                
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium">Média da Turma</span>
-                    <span className="text-sm font-bold text-muted-foreground">7.2</span>
-                  </div>
-                  <Progress value={72} className="h-3" />
-                </div>
-                
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm font-medium">Média da Escola</span>
-                    <span className="text-sm font-bold text-muted-foreground">6.8</span>
-                  </div>
-                  <Progress value={68} className="h-3" />
-                </div>
+              <div className="h-80">
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart data={gradeEvolutionData}>
+                    <CartesianGrid strokeDasharray="3 3" className="opacity-30" />
+                    <XAxis 
+                      dataKey="mes" 
+                      className="text-xs"
+                      tick={{ fontSize: 12 }}
+                    />
+                    <YAxis 
+                      domain={[6, 8]} 
+                      className="text-xs"
+                      tick={{ fontSize: 12 }}
+                    />
+                    <Tooltip 
+                      contentStyle={{
+                        backgroundColor: 'hsl(var(--card))',
+                        border: '1px solid hsl(var(--border))',
+                        borderRadius: '8px',
+                        boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)'
+                      }}
+                    />
+                    <Legend />
+                    <Line 
+                      type="monotone" 
+                      dataKey="estudante" 
+                      stroke="hsl(var(--primary))" 
+                      strokeWidth={3}
+                      name="Seu Desempenho"
+                      dot={{ fill: 'hsl(var(--primary))', strokeWidth: 2, r: 6 }}
+                      activeDot={{ r: 8, stroke: 'hsl(var(--primary))', strokeWidth: 2 }}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="turma" 
+                      stroke="hsl(var(--secondary))" 
+                      strokeWidth={2}
+                      name="Média da Turma"
+                      dot={{ fill: 'hsl(var(--secondary))', strokeWidth: 2, r: 4 }}
+                    />
+                    <Line 
+                      type="monotone" 
+                      dataKey="escola" 
+                      stroke="hsl(var(--muted-foreground))" 
+                      strokeWidth={2}
+                      strokeDasharray="5 5"
+                      name="Média da Escola"
+                      dot={{ fill: 'hsl(var(--muted-foreground))', strokeWidth: 2, r: 4 }}
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
               </div>
             </CardContent>
           </Card>
 
           {/* Frequência Mensal */}
-          <Card className="shadow-card">
+          <Card className="shadow-card hover:scale-105 transition-smooth">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Calendar className="w-5 h-5 text-primary" />
@@ -161,33 +209,46 @@ export default function Dashboard() {
               <CardDescription>Presença e faltas por mês</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="space-y-4">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm">Janeiro</span>
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm text-green-600">18 presenças</span>
-                    <span className="text-sm text-red-500">2 faltas</span>
-                  </div>
-                </div>
-                <Progress value={90} className="h-2" />
-                
-                <div className="flex justify-between items-center">
-                  <span className="text-sm">Fevereiro</span>
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm text-green-600">19 presenças</span>
-                    <span className="text-sm text-red-500">1 falta</span>
-                  </div>
-                </div>
-                <Progress value={95} className="h-2" />
-                
-                <div className="flex justify-between items-center">
-                  <span className="text-sm">Março</span>
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm text-green-600">17 presenças</span>
-                    <span className="text-sm text-red-500">3 faltas</span>
-                  </div>
-                </div>
-                <Progress value={85} className="h-2" />
+              <div className="h-80">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={attendanceData}>
+                    <CartesianGrid strokeDasharray="3 3" className="opacity-30" />
+                    <XAxis 
+                      dataKey="mes" 
+                      className="text-xs"
+                      tick={{ fontSize: 12 }}
+                    />
+                    <YAxis 
+                      className="text-xs"
+                      tick={{ fontSize: 12 }}
+                    />
+                    <Tooltip 
+                      contentStyle={{
+                        backgroundColor: 'hsl(var(--card))',
+                        border: '1px solid hsl(var(--border))',
+                        borderRadius: '8px',
+                        boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1)'
+                      }}
+                      formatter={(value, name) => [
+                        `${value} ${name === 'presencas' ? 'presenças' : 'faltas'}`,
+                        name === 'presencas' ? 'Presenças' : 'Faltas'
+                      ]}
+                    />
+                    <Legend />
+                    <Bar 
+                      dataKey="presencas" 
+                      fill="hsl(var(--primary))" 
+                      name="Presenças"
+                      radius={[4, 4, 0, 0]}
+                    />
+                    <Bar 
+                      dataKey="faltas" 
+                      fill="hsl(var(--destructive))" 
+                      name="Faltas"
+                      radius={[4, 4, 0, 0]}
+                    />
+                  </BarChart>
+                </ResponsiveContainer>
               </div>
             </CardContent>
           </Card>
