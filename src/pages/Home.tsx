@@ -70,9 +70,8 @@ const Home = () => {
             </Button>
             <Button
               onClick={() => navigate("/about")}
-              variant="outline"
               size="lg"
-              className="border-2 border-white/40 text-white hover:bg-white/10 backdrop-blur-sm px-8 py-4 text-lg font-semibold transition-smooth hover:scale-105"
+              className="bg-white text-primary hover:bg-white/90 shadow-elegant px-8 py-4 text-lg font-semibold transition-smooth hover:scale-105"
             >
               Saiba Mais
             </Button>
@@ -80,7 +79,7 @@ const Home = () => {
         </div>
 
         {/* Features grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto mb-20">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
@@ -101,6 +100,68 @@ const Home = () => {
               </Card>
             );
           })}
+        </div>
+
+        {/* Testimonials Section */}
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 drop-shadow-lg">
+              O que dizem sobre o Pontua+
+            </h2>
+            <p className="text-lg text-white/90 drop-shadow-sm">
+              Depoimentos reais de quem já transformou o aprendizado com nossa plataforma
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Student testimonial */}
+            <Card className="bg-white/95 backdrop-blur-sm border-0 shadow-elegant hover:bg-white transition-all duration-300 hover:scale-105">
+              <CardContent className="p-8">
+                <div className="mb-6">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center mb-4">
+                    <Users className="w-6 h-6 text-white" />
+                  </div>
+                  <h4 className="font-bold text-lg text-foreground mb-2">Maria Silva</h4>
+                  <p className="text-sm text-muted-foreground font-medium">Estudante - 9º ano</p>
+                </div>
+                <p className="text-muted-foreground leading-relaxed italic">
+                  "O Pontua+ tornou os estudos muito mais divertidos! Agora eu fico empolgada para ver minha posição no ranking e trocar pontos por recompensas. Minhas notas melhoraram muito!"
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Parent testimonial */}
+            <Card className="bg-white/95 backdrop-blur-sm border-0 shadow-elegant hover:bg-white transition-all duration-300 hover:scale-105">
+              <CardContent className="p-8">
+                <div className="mb-6">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center mb-4">
+                    <Users className="w-6 h-6 text-white" />
+                  </div>
+                  <h4 className="font-bold text-lg text-foreground mb-2">Carlos Oliveira</h4>
+                  <p className="text-sm text-muted-foreground font-medium">Pai de aluno</p>
+                </div>
+                <p className="text-muted-foreground leading-relaxed italic">
+                  "Como pai, posso acompanhar o progresso do meu filho de forma clara e motivadora. A plataforma criou uma competição saudável que estimula o aprendizado."
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Teacher testimonial */}
+            <Card className="bg-white/95 backdrop-blur-sm border-0 shadow-elegant hover:bg-white transition-all duration-300 hover:scale-105">
+              <CardContent className="p-8">
+                <div className="mb-6">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center mb-4">
+                    <Users className="w-6 h-6 text-white" />
+                  </div>
+                  <h4 className="font-bold text-lg text-foreground mb-2">Profª. Ana Costa</h4>
+                  <p className="text-sm text-muted-foreground font-medium">Professora de Matemática</p>
+                </div>
+                <p className="text-muted-foreground leading-relaxed italic">
+                  "O Pontua+ revolucionou minha sala de aula. Os alunos estão mais engajados, participativos e a gamificação tornou o aprendizado muito mais efetivo."
+                </p>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </div>
     </div>
